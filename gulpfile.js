@@ -30,14 +30,13 @@ gulp.task('mocha', function() {
     .pipe(plugins.mocha({
       reporter : 'spec',
       bail : true
-    }))
+    }));
 });
 
 gulp.task('watch', function() {
   gulp.watch(paths.watch, ['test']);
 });
 
-gulp.task('test', ['lint', 'mocha', 'watch']);
+gulp.task('test', ['lint', 'mocha']);
 
-gulp.task('default', ['test']);
-
+gulp.task('default', ['test', 'watch']);
