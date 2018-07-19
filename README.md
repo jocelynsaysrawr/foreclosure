@@ -14,10 +14,11 @@ Use strict mode for this exercise. ![Test][test]
 
 ### Initialize variables
 
-1. Declare a variable named steve. ![Test][test]
-1. Declare a variable named stevesLoan. ![Test][test]
-1. Declare a variable named month, with an initial value of 0. ![Test][test]
-1. Declare a variable named monthsUntilEvicted. ![Test][test]
+A global variable named `data` is available to you. This variable is an object.
+
+1. Declare a key named steve on the data object, with an value of null. ![Test][test]
+1. Declare a key named stevesLoan on the data object, with an value of null. ![Test][test]
+1. Declare a key named monthsUntilEvicted on the data object, with an initial value of 0. ![Test][test]
 
 ### loan()
 
@@ -25,7 +26,7 @@ Declare a function named `loan()` that takes `0` arguments ![Test][test]
 
 Write the following statements inside the `loan()` function block
 
-1. Declare a variable named `account`, with an initial value being a literal object having the following properties and values:
+1. Declare a variable named `account` using const, with an initial value being a literal object having the following properties and values:
   - key : `borrowed`, value : `550000`
   - key : `balance`, value : `286000`
   - key : `monthlyPayment`, value : `1700`
@@ -54,7 +55,7 @@ Declare a function named `borrower()` that takes `1` argument named `loan` ![Tes
 
 Write the following statements inside the `borrower()` function block
 
-1. Declare a variable named `account`, with an initial value being a literal object having the following properties and values:
+1. Declare a variable named `account` using const, with an initial value being a literal object having the following properties and values:
   - key : `monthlyIncome`, value : `1350`
   - key : `funds`, value : `2800`
   - key : `loan`, value : `loan`
@@ -74,12 +75,12 @@ Write the following statements inside the `borrower()` function block
 
 ### Set variables and "step forward in time"
 
-1. Invoke the `loan` function and assign it's return value to the variable `stevesLoan`. ![Test][test]
-1. Invoke the `borrower` function passing in the argument `stevesLoan` and assign it's return value to the variable `steve`. ![Test][test]
-1. Create a `while` loop that runs the following statement while `stevesLoan` is not foreclosed:
-  - `steve` invokes `payDay`
-  - `steve` invokes `makePayment`
-  - increment `month` by `1` ![Test][test]
+1. Invoke the `loan` function and assign it's return value to the variable `data.stevesLoan`. ![Test][test]
+1. Invoke the `borrower` function passing in the argument `data.stevesLoan` and assign it's return value to the variable `data.steve`. ![Test][test]
+1. Create a `while` loop that runs the following statement while `data.stevesLoan` is not foreclosed:
+  - `data.steve` invokes `payDay`
+  - `data.steve` invokes `makePayment`
+  - increment `data.monthsUntilEvicted` by `1` ![Test][test]
 
 ### Conclusion
 
