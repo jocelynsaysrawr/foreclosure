@@ -1,15 +1,15 @@
 'use strict';
 
-var gulp   = require('gulp');
-var plugins = require('gulp-load-plugins')();
+const gulp   = require('gulp');
+const plugins = require('gulp-load-plugins')();
 
-var paths = {
+const paths = {
   lint : ['./*.js', '!gulpfile.js'],
   watch : ['gulpfile.js', './foreclosure.js', './test/**/*.js', '!test/{temp,temp/**}'],
   tests : ['./test/**/*.js', '!test/{temp,temp/**}']
 };
 
-var plumberConf = {};
+const plumberConf = {};
 
 if (process.env.CI) {
   plumberConf.errorHandler = function(err) {
