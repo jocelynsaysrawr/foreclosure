@@ -17,20 +17,17 @@
   },
   "keywords": [],
   "dependencies": {
-    "debug": "2.2.0"
+    "debug": "^4.1.0",
+    "gulp-eslint": "^5.0.0"
   },
   "devDependencies": {
     "chai": "^2.3.0",
     "coveralls": "^3.0.2",
     "gulp": "^4.0.0",
-    "gulp-jscs": "^1.1.2",
-    "gulp-jshint": "^2.1.0",
     "gulp-load-plugins": "^1.5.0",
     "gulp-mocha": "^6.0.0",
     "gulp-plumber": "^0.6.5",
     "gulp-sourcemaps": "^1.5.2",
-    "jshint": "^2.9.7",
-    "jshint-stylish": "^0.4.0",
     "should": "^4.0.4",
     "sinon": "^1.14.1"
   },

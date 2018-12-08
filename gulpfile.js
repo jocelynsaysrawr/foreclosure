@@ -17,12 +17,11 @@ if (process.env.CI) {
   };
 }
 
-gulp.task('lint', function() {
+gulp.task('lint', function(done) {
   return gulp.src(paths.lint)
-    .pipe(plugins.jshint())
-    .pipe(plugins.plumber(plumberConf))
-    .pipe(plugins.jscs())
-    .pipe(plugins.jshint.reporter('jshint-stylish'));
+    .pipe(plugins.eslint())
+    .pipe(plugins.eslint.format())
+    .pipe(plugins.eslint.failAfterError());
 });
 
 gulp.task('mocha', function() {
