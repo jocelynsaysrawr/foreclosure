@@ -9,34 +9,32 @@ const paths = {
   tests : ['./test/**/*.js', '!test/{temp,temp/**}']
 };
 
-const plumberConf = {};
-
-if (process.env.CI) {
-  plumberConf.errorHandler = function(err) {
-    throw err;
-  };
+function handleError(err) {
+  console.log(err.toString());
+  this.emit('end');
 }
 
-gulp.task('lint', function() {
+gulp.task('lint', function(done) {
   return gulp.src(paths.lint)
-    .pipe(plugins.jshint())
-    .pipe(plugins.plumber(plumberConf))
-    .pipe(plugins.jscs())
-    .pipe(plugins.jshint.reporter('jshint-stylish'));
+    .pipe(plugins.eslint())
+    .pipe(plugins.eslint.format())
+    .pipe(plugins.eslint.failAfterError());
 });
 
 gulp.task('mocha', function() {
   return gulp.src(paths.tests)
-    .pipe(plugins.mocha({
+    .pipe(plugins
+      .mocha({
       reporter : 'spec',
       bail : true
-    }));
+    })
+      .on("error", handleError));
 });
 
 gulp.task('watch', function() {
-  gulp.watch(paths.watch, ['test']);
+  gulp.watch(paths.watch, gulp.series('test'));
 });
 
-gulp.task('test', ['lint', 'mocha']);
+gulp.task('test', gulp.series('lint', 'mocha'));
 
-gulp.task('default', ['test', 'watch']);
+gulp.task('default', gulp.series(gulp.parallel('test', 'watch')));
